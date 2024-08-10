@@ -11,8 +11,6 @@ import Zoa1Image from '/public/landingPageAssets/zoa1-removebg.png'
 import Zoa2Image from '/public/landingPageAssets/zoa2.png'
 import Zoa3Image from '/public/landingPageAssets/zoa3.png'
 import ClovePolypImage from '/public/landingPageAssets/clove-polyp.png'
-import NextVideo from "next-video"
-import Media1 from "@/videos/video1.mp4"
 import Link from 'next/link'
 
 const LandingPage = () => {
@@ -40,7 +38,7 @@ const LandingPage = () => {
   let visible = 0
   
   const [isMobile, setIsMobile] = useState(false)
-  const [screenSize, setScreenSize] = useState(window.innerWidth);
+  const [screenSize, setScreenSize] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -52,17 +50,14 @@ const LandingPage = () => {
         console.log("Device is Mobile")
     }
     else{
+        setIsMobile(false)
         console.log('Device is Desktop')
     }
-}, [])
+}, [screenSize])
 
-console.log("not useeffect: ", isMobile)
 
 
   useEffect(() => {
-    console.log('only run if mobile')
-    console.log("inside useeffect: ", isMobile)
-
     // Get the new X position (for example, randomly)
 
     if(isMobile){
@@ -73,7 +68,7 @@ console.log("not useeffect: ", isMobile)
 
     
     if(!isMobile){
-      console.log(isMobile)
+      console.log("is mobile: ", isMobile)
       const newXPosition = 30
       setXPosition(newXPosition);
       setTimeout(() => {

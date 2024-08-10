@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["video.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["video.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/spsPage/page.js", "app/components/EachItem/EachItem.js", "app/corals/page.jsx"],
   "exclude": ["node_modules"]
 }

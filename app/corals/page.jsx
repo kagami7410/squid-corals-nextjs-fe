@@ -3,13 +3,7 @@ import NavBar2 from '../components/NavBar2/NavBar2'
 import NavBar from '../components/NavBar/NavBar'
 import Link from 'next/link'
 
-import MultiColouredHammerImage from '/public/landingPageAssets/hammer-no-bg.png'
 import GoldToarchImage from '/public/landingPageAssets/torch1-no-bg.png'
-import GreenToarchImage from '/public/landingPageAssets/greenToarch-no-bg.jpg'
-import RedBlueScolyToarchImage from '/public/landingPageAssets/scoly-red-blue.png'
-import Zoa1Image from '/public/landingPageAssets/zoa1-removebg.png'
-import Zoa2Image from '/public/landingPageAssets/zoa2.png'
-import Zoa3Image from '/public/landingPageAssets/zoa3.png'
 import ClovePolypImage from '/public/landingPageAssets/clove-polyp.png'
 import SPS1 from '/public/landingPageAssets/sps1.png'
 
