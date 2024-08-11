@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 
 
 const page = () => {
-    const [allItems, setAllItems] = useState([null])
+    const [allItems, setAllItems] = useState([])
 
     useEffect(() =>{
         const fetchData = async () => {
