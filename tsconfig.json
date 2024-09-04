@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["video.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/spsPage/page.jsx", "app/components/EachItem/EachItem.js", "app/corals/page.jsx"],
+  "include": ["video.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/spsPage/page.jsx", "app/components/EachItem/EachItem.jsx", "app/corals/page.tsx", "app/page.jsx", "app/components/LandingPage/LandingPage.jsx", "app/components/NavBar/NavBar.jsx"],
   "exclude": ["node_modules"]
 }

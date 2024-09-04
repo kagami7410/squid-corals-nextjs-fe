@@ -13,7 +13,7 @@ import Zoa3Image from '/public/landingPageAssets/zoa3.png'
 import ClovePolypImage from '/public/landingPageAssets/clove-polyp.png'
 import Link from 'next/link'
 
-const LandingPage = () => {
+const LandingPage = ({setAddToCartClicked, test}) => {
 
   const [opacityEnabled, setOpacity] = useState(0);
 
@@ -146,7 +146,7 @@ const LandingPage = () => {
           <div className={`${styles.shortDescription} ${styles.glow} ${styles.textGlow} ${border}
             `}>- The UK’s largest sustainable coral provider</div>
           <div className={`${styles.shopCoralsButtonContainer} ${border} `}> 
-          <Link href='/corals' className="btn btn-lg opacity-0 sm:opacity-100  sm:btn-lg border-amber-400">Shop Corals</Link>
+          <Link href={{pathname: '/corals', query: test}} className="btn btn-lg opacity-0 sm:opacity-100  sm:btn-lg border-amber-400">Shop Corals</Link>
           </div>
         </div>
 
