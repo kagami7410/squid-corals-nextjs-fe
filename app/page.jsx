@@ -1,4 +1,5 @@
 'use client'
+import BasketProvider from './components/BasketContext/BasketContext';
 import LandingPage from './components/LandingPage/LandingPage'
 import { useEffect, useState } from 'react';
 
@@ -8,18 +9,16 @@ export default function Home() {
 
   useEffect(() => {
     const basketItemCount = localStorage.getItem('basketItemCount');
-    if(basketItemCount === "undefined"){
+    if (basketItemCount === "undefined") {
       localStorage.setItem('basketItemCount', 0);
     }
   }, []);
 
 
-
-
   return (
-    
+
     <main>
-    <LandingPage />
+        <LandingPage />
     </main>
 
   )

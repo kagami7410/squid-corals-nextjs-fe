@@ -1,17 +1,35 @@
+'use client'
 import { PageNotFoundError } from 'next/dist/shared/lib/utils';
 import React from 'react'
 import {notFound} from 'next/navigation'
 
+import { useBasket } from '@/app/components/BasketContext/BasketContext';
+
+interface BasketItem {
+    id: string;
+    title: string;
+    price: boolean;
+    code: string;
+    description: string;
+    quantity: number;
+  }
+
+  interface CoralItem {
+    title: string;
+    price: boolean;
+    code: string;
+    description: string;
+}
 
 
 const page = async ({ params }: { params: { coralType: string } }) => {
+
+    const { addItemToBasket } = useBasket();
+
+    const handleAddToBasket = ( item: BasketItem) => {
+        addItemToBasket(item);
+      };
     
-    interface CoralItem {
-        title: string;
-        price: boolean;
-        code: string;
-        description: string;
-    }
 
     const vaildPaths = ["allCorals", "SPS", "LPS", "SOFT"]
 
@@ -46,7 +64,7 @@ const page = async ({ params }: { params: { coralType: string } }) => {
 
 
 
-    const returnedAllItems:CoralItem[] = await getItems()
+    const returnedAllItems:BasketItem[] = await getItems()
 
     const jsxreturnedAllItems = returnedAllItems.map(eachItem => {
     return (
@@ -55,7 +73,7 @@ const page = async ({ params }: { params: { coralType: string } }) => {
             {/* <Image src={`${title}-${code}`} alt="Example" /> */}
             <h3>£{eachItem.price}</h3>
             <h4 className='border w-1/4 text-center m-1 text-stone-100 text-xs'>{eachItem.code}</h4>
-            <div className='btn w-1/2'> Add To Cart</div>
+            <button onClick={() =>{handleAddToBasket(eachItem)}} className='btn w-1/2'> Add To Cart</button>
         </div>
     )
 })

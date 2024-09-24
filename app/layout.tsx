@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import NavBar from './components/NavBar/NavBar'
 import NavBar2 from './components/NavBar2/NavBar2'
+import BasketProvider from './components/BasketContext/BasketContext';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,13 +20,19 @@ export default function RootLayout({
   return (
     <html lang="en" >
       <body className={inter.className}>
+
         <header>
-          <NavBar/>
-          <NavBar2/>
+
         </header>
+        <BasketProvider> 
+        <NavBar/>
+        <NavBar2/>
         {children}
+        </BasketProvider>
         <footer></footer>
         </body>
     </html>
+
+
   )
 }
