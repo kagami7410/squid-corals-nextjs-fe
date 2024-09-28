@@ -1,1 +1,0 @@
-const imageName = searchParams.get('imageName');

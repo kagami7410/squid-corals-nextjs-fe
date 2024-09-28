@@ -44,14 +44,10 @@ const Page = async ({ params }: { params: { coralType: string } }) => {
     
             }
             else{
-             // Replace the URL with your API endpoint
-            const res = await fetch(`http://localhost:9080/backend/items/getByType?coralType=${params.coralType}`);
-            const data = await res.json();
-            console.log(data)
-        
-            // Pass the data to the page via props
-            return data
-    
+                const res = await fetch(`/api/getCoralType?coralType=${params.coralType}`);
+                const data = await res.json();
+                console.log(data)
+                return data
             }
         }
 
@@ -60,8 +56,6 @@ const Page = async ({ params }: { params: { coralType: string } }) => {
         }
 
     }
-    
-
 
 
     const returnedAllItems:BasketItem[] = await getItems()
