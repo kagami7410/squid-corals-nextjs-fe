@@ -13,7 +13,7 @@ import Zoa3Image from '/public/landingPageAssets/zoa3.png'
 import ClovePolypImage from '/public/landingPageAssets/clove-polyp.png'
 import Link from 'next/link'
 
-const LandingPage = ({setAddToCartClicked, test}) => {
+const LandingPage = () => {
 
   const [opacityEnabled, setOpacity] = useState(0);
 
@@ -35,7 +35,6 @@ const LandingPage = ({setAddToCartClicked, test}) => {
 
   const [border, setBorder] = useState('');
   const observedElement = useRef(null);
-  let visible = 0
   
   const [isMobile, setIsMobile] = useState(false)
   const [screenSize, setScreenSize] = useState(0);
@@ -82,7 +81,6 @@ const LandingPage = ({setAddToCartClicked, test}) => {
         setXPositionZoa3(40)
         setXPositionClovePolyp(20)
         setOpacity(1)
-        visible = 1;
         // setBorder('border')
   
       }, 1)
@@ -90,7 +88,6 @@ const LandingPage = ({setAddToCartClicked, test}) => {
     else{
           setTimeout(() => {
       setOpacity(1)
-      visible = 1;
 
     }, 1)
     }
@@ -124,15 +121,6 @@ const LandingPage = ({setAddToCartClicked, test}) => {
       }
     );
 
-    if (observedElement.current) {
-      observer.observe(observedElement.current);
-    }
-
-    return () => {
-      if (observedElement.current) {
-        observer.unobserve(observedElement.current);
-      }
-    };
   }, []);
 
   return (
@@ -146,7 +134,7 @@ const LandingPage = ({setAddToCartClicked, test}) => {
           <div className={`${styles.shortDescription} ${styles.glow} ${styles.textGlow} ${border}
             `}>- The UK’s largest sustainable coral provider</div>
           <div className={`${styles.shopCoralsButtonContainer} ${border} `}> 
-          <Link href={{pathname: '/corals', query: test}} className="btn btn-lg opacity-0 sm:opacity-100  sm:btn-lg border-amber-400">Shop Corals</Link>
+          <Link href={{pathname: '/corals'}} className="btn btn-lg opacity-0 sm:opacity-100  sm:btn-lg border-amber-400">Shop Corals</Link>
           </div>
         </div>
 

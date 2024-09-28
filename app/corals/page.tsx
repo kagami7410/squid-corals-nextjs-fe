@@ -1,7 +1,5 @@
 'use client';
 import React from 'react'
-import NavBar2 from '../components/NavBar2/NavBar2'
-import NavBar from '../components/NavBar/NavBar'
 import Link from 'next/link'
 
 import GoldToarchImage from '/public/landingPageAssets/torch1-no-bg.png'

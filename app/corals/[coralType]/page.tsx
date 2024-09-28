@@ -22,7 +22,7 @@ interface BasketItem {
 }
 
 
-const page = async ({ params }: { params: { coralType: string } }) => {
+const Page = async ({ params }: { params: { coralType: string } }) => {
 
     const { addItemToBasket } = useBasket();
 
@@ -37,7 +37,7 @@ const page = async ({ params }: { params: { coralType: string } }) => {
     async function getItems() {
         if(vaildPaths.includes(params.coralType)){
             if(params.coralType === "allCorals"){
-                const res = await fetch('http://localhost:9080/backend/items/getAll');
+                const res = await fetch('/api/getAllCorals');
                 const data = await res.json();
                 console.log(data)
                 return data
@@ -93,4 +93,4 @@ return (
 )
 }
 
-export default page
+export default Page

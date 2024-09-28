@@ -5,6 +5,7 @@ const BasketContext = createContext<BasketContextData | undefined>(undefined);
 // Define the context data
 interface BasketContextData {
   basket: BasketItem[];
+  removeItemInBasket: (item: BasketItem) => void;
   addItemToBasket: (item: BasketItem) => void;
   getBasketCount: () => number;
 }
@@ -53,7 +54,7 @@ const BasketProvider = ({ children }: BasketProviderProps) => {
     }
   }, [basket]);
 
-  // Function to add item to the basket
+
   const addItemToBasket = (item: BasketItem) => {
     setBasket((prevBasket) => {
       const existingItem = prevBasket.find((basketItem) => basketItem.id === item.id);
@@ -68,6 +69,27 @@ const BasketProvider = ({ children }: BasketProviderProps) => {
       // Add new item if it doesn't exist in the basket
       return [...prevBasket, { ...item, quantity: 1 }];
     });
+  }
+
+  // Function to add item to the basket
+  const removeItemInBasket = (item: BasketItem) => {
+    setBasket((currentBasket) => {
+      const existingItem = currentBasket.find((basketItem) => basketItem.id === item.id);
+      const existingItemQuantity = existingItem?.quantity;
+      if (existingItemQuantity !== 1) {
+        // Update the quantity if the item already exists in the basket
+        return currentBasket.map((basketItem) =>
+          basketItem.id === item.id
+            ? { ...basketItem, quantity: basketItem.quantity - 1 }
+            : basketItem
+        );
+      }
+      else {
+        const filteredItems = currentBasket.filter(eachItem => eachItem !== item);
+        return filteredItems
+      }
+      // Add new item if it doesn't exist in the basket
+    });
   };
 
     // Function to get basket count (total number of items)
@@ -76,7 +98,7 @@ const BasketProvider = ({ children }: BasketProviderProps) => {
     };
 
   return (
-    <BasketContext.Provider value={{ basket, addItemToBasket, getBasketCount }}>
+    <BasketContext.Provider value={{ basket, addItemToBasket, getBasketCount, removeItemInBasket}}>
       {children}
     </BasketContext.Provider>
   )
