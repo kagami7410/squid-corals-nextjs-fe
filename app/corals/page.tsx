@@ -7,10 +7,8 @@ import ClovePolypImage from '/public/landingPageAssets/clove-polyp.png'
 import SPS1 from '/public/landingPageAssets/sps1.png'
 
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 
-const page = () => {
-  const router = useRouter();
+const Page = () => {
 
 
   return (
@@ -57,4 +55,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

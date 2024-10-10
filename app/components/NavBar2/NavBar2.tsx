@@ -20,7 +20,7 @@ const NavBar2 = () => {
           </ul>
         </details>
       </li>
-      <li><a className='text-lg'>LiveStocks</a></li>
+      <li><a className='text-lg'>LiveStocks</a></li>2
 
       <li><a  className='text-lg'>Special Offers</a></li>
     </ul>

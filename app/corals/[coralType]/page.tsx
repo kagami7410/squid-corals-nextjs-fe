@@ -1,9 +1,9 @@
 'use client'
 import { PageNotFoundError } from 'next/dist/shared/lib/utils';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {notFound} from 'next/navigation'
-
 import { useBasket } from '@/app/components/BasketContext/BasketContext';
+
 
 interface BasketItem {
     id: string;
@@ -14,15 +14,10 @@ interface BasketItem {
     quantity: number;
   }
 
-  interface CoralItem {
-    title: string;
-    price: boolean;
-    code: string;
-    description: string;
-}
 
 
-const Page = async ({ params }: { params: { coralType: string } }) => {
+const Page = ({ params }: { params: { coralType: string } }) => {
+    const [coralItems, setCoralItems] = useState<BasketItem[]>([]); 
 
     const { addItemToBasket } = useBasket();
 
@@ -33,36 +28,37 @@ const Page = async ({ params }: { params: { coralType: string } }) => {
 
     const vaildPaths = ["allCorals", "SPS", "LPS", "SOFT"]
 
+    useEffect(()=> {
+        getItems()
+    }, [])
 
-    async function getItems() {
+
+     function getItems() {
         if(vaildPaths.includes(params.coralType)){
             if(params.coralType === "allCorals"){
-                const res = await fetch('/api/getAllCorals');
-                const data = await res.json();
-                console.log(data)
-                return data
-    
+                fetch('/api/getAllCorals')
+                .then(res => res.json())
+                .then(data => setCoralItems(data))
             }
             else{
-                const res = await fetch(`/api/getCoralType?coralType=${params.coralType}`);
-                const data = await res.json();
-                console.log(data)
-                return data
+                fetch(`/api/getCoralType?coralType=${params.coralType}`)
+                .then(res => res.json())
+                .then(data => setCoralItems(data))
             }
         }
 
         else{
-               notFound()
+                notFound()
         }
+     }
 
-    }
 
 
-    const returnedAllItems:BasketItem[] = await getItems()
+    const jsxreturnedAllItems = coralItems.map(eachItem => {
 
-    const jsxreturnedAllItems = returnedAllItems.map(eachItem => {
     return (
-        <div className='flex flex-col w-3/4 border m-3 p-3 lg:w-1/4'>
+        <div key={eachItem.id} className='flex flex-col w-3/4 border m-3 p-3 lg:w-1/4'>
+
             <h1>{eachItem.title}</h1>
             {/* <Image src={`${title}-${code}`} alt="Example" /> */}
             <h3>£{eachItem.price}</h3>

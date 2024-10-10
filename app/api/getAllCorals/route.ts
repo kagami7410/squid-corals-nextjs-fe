@@ -1,9 +1,11 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
 
-export async function GET(request:NextRequest) {
+export async function GET() {
+    const backendHostName = process.env.SQUID_CORAL_BACKEND_HOSTNAME
+
     try{
-        const res = await fetch('http://localhost:9080/backend/items/getAll');
+        const res = await fetch(`${backendHostName}/backend/items/getAll`);
         const data = await res.json();
         console.log(data)
         return NextResponse.json(data, { status: 200 });

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { ChangeEvent, useState } from 'react';
 
 
-const page = () => {
+const Page = () => {
 
     // File is stored in the state as type File or null if not selected.
     const [file, setFile] = useState<File | null>(null);
@@ -134,4 +134,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

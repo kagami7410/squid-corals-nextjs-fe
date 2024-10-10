@@ -5,11 +5,11 @@ export async function GET(req: NextRequest, res: NextResponse) {
   // Extract query parameters from the URL
   const { searchParams } = new URL(req.url);
   const imageName = searchParams.get('imageName'); // Extract 'imageName' from query
-
+  const backendHostName = process.env.SQUID_CORAL_BACKEND_HOSTNAME
   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNzI3MTcyNDE4LCJleHAiOjE3MjcxNzYwMTh9.9R4NeNQrqUMfHzYV85hH8tfAHq3wkWcjNEUyd50dg7s'; // Replace with your actual token
 
   try {
-    const response = await fetch(`http:localhost:8000/squidCorals/images?imageName=${imageName}`, {
+    const response = await fetch(`${backendHostName}/squidCorals/images?imageName=${imageName}`, {
       headers: {
         'Authorization': `${token}`,
       },
