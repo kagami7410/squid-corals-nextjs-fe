@@ -1,6 +1,6 @@
 @Library("jenkins_library") _
 
 nextjsFrontendPipeline{
-    appName = 'squid-corals'
+    appName = 'squidcorals-frontend'
 }
 
