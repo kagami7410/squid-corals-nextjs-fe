@@ -1,6 +1,9 @@
 @Library("jenkins_library@master") _
 
 nextjsFrontendPipeline{
-    appName = 'squidcorals-frontend'
+    parameters {
+        string(name: 'appName', defaultVaule: 'squidcorals-frontend', description: 'name of the application' )
+    }
+    // appName = 'squidcorals-frontend'
 }
 
