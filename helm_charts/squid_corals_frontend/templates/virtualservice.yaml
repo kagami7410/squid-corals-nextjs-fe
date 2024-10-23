@@ -11,8 +11,7 @@ spec:
   http:
   - match:
     - uri:
-        prefix: /squidcorals
-
+        prefix: /
     route:
     - destination:
         host: {{ .Values.app.name}}-service.{{ .Values.namespace.name}}.svc.cluster.local
