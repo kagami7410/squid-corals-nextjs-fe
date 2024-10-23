@@ -2,7 +2,7 @@ app:
   name: squidcorals-frontend
   image:
     name: docker.io/sujan7410/squidcorals-frontend
-    tag: dev_test
+    tag: latest
 namespace:
   name: squidcorals-frontend
 
